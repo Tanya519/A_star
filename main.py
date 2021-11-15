@@ -8,22 +8,13 @@ import time
 def main():
     map_name = 'maps/Denver_0_512.map'
 
-    time_list = []
-    cost_list = []
-
     gridded_map = Map(map_name)
     astar = AStar(gridded_map)
 
     Node.Cut_corners = True
-    start = Node(35, 10)
-    end = Node(120, 504)
-    start_time = time.time()
+    start = Node(7, 305)
+    end = Node(483, 17)
     ans, cost = astar.search(start, end)
-    end_time = time.time()
-    astar_time = end_time - start_time
-    time_list.append(astar_time)
-    cost_list.append(cost)
-    print(cost)
 
     Grid = astar.map.picture
 
@@ -45,6 +36,9 @@ def main():
 
     with open('path.txt', 'w') as f:
         with contextlib.redirect_stdout(f):
+            print('Start Node: ',repr( start))
+            print('End Node: ', repr(end))
+            print('Cost: ' , cost)
             for m in Grid:
                 for v in m:
                     print(str(v).replace(' ', ''), end='')

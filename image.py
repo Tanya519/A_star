@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 from search.Node import Node
 
+
 grid = main()
 for i in range(0, Node.map_width):
     for j in range(0, Node.map_height):
